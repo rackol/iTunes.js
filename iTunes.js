@@ -12,6 +12,17 @@ function search(){
 
 }
 
+$.ajax({
+    url: "http://itunes.apple.com/search?term=" + artist,
+    dataType: "jsonp",
+    success: go
+});
+
+
+function go(data) {
+     console.log(data);
+}
+
 function select(){
     var artist1=document.getElementById("name").value;
     var number=document.getElementById("nsongs").value;
