@@ -1,4 +1,13 @@
 body{
     background-color: darkcyan;
-    margin-left: 50px;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top: auto;
+}
+#table{
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top: auto;
 }

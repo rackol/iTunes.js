@@ -29,25 +29,42 @@ function go(data) {
         $("#div1").hide();
         document.getElementById("div4").innerHTML="That search had no results. Please enter a new search term.";
     }if(data.results.length!=0&&number!=0){
+        results += "<tr><td>Results:</td></tr>";
         for(i=0;i<number;i++){
-            results += "<tr><td>Results:</td></tr><tr>";
-            results+="<td>"+data.results[i].artistName+"</td>";
-            results+="<td>"+data.results[i].collectionName+"</td>";
+            results+="<td>Rank:"+(i+1)+"</td>";
+            if (data.results[i].artistName.length>=15){
+                results+="<td>"+data.results[i].artistName.substring(0,15)+"...</td>";
+            }else{
+                results+="<td>"+data.results[i].artistName+"</td>";
+            }
+            if (data.results[i].collectionName.length>=15){
+                results+="<td>"+data.results[i].collectionName.substring(0,15)+"...</td>";
+            }else{
+                results+="<td>"+data.results[i].collectionName+"</td>";
+            }
+
             results+="<td><img src='"+data.results[i].artworkUrl100 +"'></td>";
             results+="<td><audio src='"+data.results[i].previewUrl +"'controls></audio></td>";
-            results += "</tr>";
+            results+="</tr>";
         }
         $("#div3").hide();
         $("#div1").hide();
+        $("#div3").empty();
+        $("#div4").empty();
         document.getElementById("table").innerHTML=results;
     }
 }
 
 function clearIt(){
-    $("#div1").empty();
+    $("table").empty();
     $("#div1").show();
     $("#div3").hide();
     $("#div4").hide();
-    $("table").hide();
+    $("#div3").empty();
+    $("#div4").empty();
+    document.getElementById("artist").innerHTML="";
+    document.getElementById("nsongs").value="0";
+    //reset the artist input
 }
+
 
