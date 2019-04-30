@@ -11,9 +11,6 @@ function search(){
         number =25;
     }if(num=="50"){
         number=50;
-    }if(number==0){
-        $("#div1").hide();
-        document.getElementById("div3").innerHTML="Please select the number of songs that you would like to see and try again.";
     }
     $.ajax({
         url: "http://itunes.apple.com/search?term="+artist,
@@ -23,24 +20,36 @@ function search(){
 }
 
 function go(data) {
+    $("#div1").hide();
+    $("#div3").show();
+    $("#div4").show();
     console.log(data);
     var results="";
+    if(number==0){
+        $("#div1").hide();
+        document.getElementById("div3").innerHTML="Please select the number of songs that you would like to see and try again.";
+    }
     if(data.results.length==0){
         $("#div1").hide();
         document.getElementById("div4").innerHTML="That search had no results. Please enter a new search term.";
     }if(data.results.length!=0&&number!=0){
-        results += "<tr><td>Results:</td></tr>";
+        results += "<tr><td>Results:</td><td>Artist</td><td>Album</td><td>Song</td><td>Album cover</td><td>Listen</td></tr>";
         for(i=0;i<number;i++){
             results+="<td>Rank:"+(i+1)+"</td>";
-            if (data.results[i].artistName.length>=15){
-                results+="<td>"+data.results[i].artistName.substring(0,15)+"...</td>";
+            if (data.results[i].artistName.length>=20){
+                results+="<td>"+data.results[i].artistName.substring(0,20)+"...</td>";
             }else{
                 results+="<td>"+data.results[i].artistName+"</td>";
             }
-            if (data.results[i].collectionName.length>=15){
-                results+="<td>"+data.results[i].collectionName.substring(0,15)+"...</td>";
+            if (data.results[i].collectionName.length>=20){
+                results+="<td>"+data.results[i].collectionName.substring(0,20)+"...</td>";
             }else{
                 results+="<td>"+data.results[i].collectionName+"</td>";
+            }
+            if (data.results[i].trackName.length>=20){
+                results+="<td>"+data.results[i].trackName.substring(0,20)+"...</td>";
+            }else{
+                results+="<td>"+data.results[i].trackName+"</td>";
             }
 
             results+="<td><img src='"+data.results[i].artworkUrl100 +"'></td>";
@@ -56,6 +65,7 @@ function go(data) {
 }
 
 function clearIt(){
+    number=0;
     $("table").empty();
     $("#div1").show();
     $("#div3").hide();
