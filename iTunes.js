@@ -37,9 +37,9 @@ function go(data) {
         for(i=0;i<number;i++){
             results+="<td>Rank:"+(i+1)+"</td>";
             if (data.results[i].artistName.length>=20){
-                results+="<td>"+data.results[i].artistName.substring(0,20)+"...</td>";
+                results+="<td><a href='detail.html?artist=' + artist"+data.results[i].artistName.substring(0,20)+"...</td>";
             }else{
-                results+="<td>"+data.results[i].artistName+"</td>";
+                results+="<td><a href='detail.html?artist=' + artist"+data.results[i].artistName+"</td>";
             }
             if (data.results[i].collectionName.length>=20){
                 results+="<td>"+data.results[i].collectionName.substring(0,20)+"...</td>";
@@ -47,9 +47,9 @@ function go(data) {
                 results+="<td>"+data.results[i].collectionName+"</td>";
             }
             if (data.results[i].trackName.length>=20){
-                results+="<td>"+data.results[i].trackName.substring(0,20)+"...</td>";
+                results+="<td><a href='detail.html?song=' + i+1"+data.results[i].trackName.substring(0,20)+"...</a></td>";
             }else{
-                results+="<td>"+data.results[i].trackName+"</td>";
+                results+="<td><a href='detail.html?song=' + i+1"+data.results[i].trackName.substring(0,20)+"</a></td>";
             }
 
             results+="<td><img src='"+data.results[i].artworkUrl100 +"'></td>";
