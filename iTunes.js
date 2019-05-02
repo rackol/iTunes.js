@@ -35,11 +35,12 @@ function go(data) {
     }if(data.results.length!=0&&number!=0){
         results += "<tr><td>Results:</td><td>Artist</td><td>Album</td><td>Song</td><td>Album cover</td><td>Listen</td></tr>";
         for(i=0;i<number;i++){
+            var i1 = i+ 1;
             results+="<td>Rank:"+(i+1)+"</td>";
             if (data.results[i].artistName.length>=20){
-                results+="<td><a href='detail.html?artist=' + artist"+data.results[i].artistName.substring(0,20)+"...</td>";
+                results+="<td>" +data.results[i].artistName.substring(0,20)+"...</td>";
             }else{
-                results+="<td><a href='detail.html?artist=' + artist"+data.results[i].artistName+"</td>";
+                results+="<td>"+data.results[i].artistName+"</td>";
             }
             if (data.results[i].collectionName.length>=20){
                 results+="<td>"+data.results[i].collectionName.substring(0,20)+"...</td>";
@@ -47,9 +48,9 @@ function go(data) {
                 results+="<td>"+data.results[i].collectionName+"</td>";
             }
             if (data.results[i].trackName.length>=20){
-                results+="<td><a href='detail.html?song=' + i+1"+data.results[i].trackName.substring(0,20)+"...</a></td>";
+                results+="<td><a href='detail.html?song=\"+i1+\"&artist=" + data.results[i].artistName + "'</a>"+data.results[i].trackName.substring(0,20)+"...</td>";
             }else{
-                results+="<td><a href='detail.html?song=' + i+1"+data.results[i].trackName.substring(0,20)+"</a></td>";
+                results+="<td><a href='detail.html?song=\"+i1+\"&artist=" + data.results[i].artistName + "'</a>" +data.results[i].trackName+"</td>";
             }
 
             results+="<td><img src='"+data.results[i].artworkUrl100 +"'></td>";
@@ -74,7 +75,6 @@ function clearIt(){
     $("#div4").empty();
     document.getElementById("artist").innerHTML="";
     document.getElementById("nsongs").value="0";
-    //reset the artist input
 }
 
 

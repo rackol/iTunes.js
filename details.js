@@ -11,3 +11,11 @@ function getQueryParameter(name){
     }
     return false;
 }
+
+function search() {
+    $.ajax({
+        url: "http://itunes.apple.com/search?term="+artist,
+        dataType: "jsonp",
+        success: go
+    });
+}
