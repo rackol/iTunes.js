@@ -14,8 +14,15 @@ function getQueryParameter(name){
 
 function search() {
     $.ajax({
-        url: "http://itunes.apple.com/search?term="+artist,
+        url: "http://itunes.apple.com/search?term="+song,
         dataType: "jsonp",
         success: go
     });
+}
+
+function go(data){
+    console.log(data);
+    results="";
+    results+="<tr><td>Deatils:</td>"
+    document.getElementById("details").innerHTML=results;
 }
