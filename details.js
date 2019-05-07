@@ -1,6 +1,5 @@
-
-console.log(getQueryParameter("song"));
-console.log(getQueryParameter("artist"));
+var song=console.log(getQueryParameter("song"));
+var artist=console.log(getQueryParameter("artist"));
 
 function getQueryParameter(name){
     var query = window.location.search.substring(1);
@@ -14,15 +13,16 @@ function getQueryParameter(name){
 
 function search() {
     $.ajax({
-        url: "http://itunes.apple.com/search?term="+song,
+        url: "http://itunes.apple.com/search?term="+artist,
         dataType: "jsonp",
         success: go
     });
 }
 
-function go(data){
+function go(data) {
     console.log(data);
-    results="";
-    results+="<tr><td>Deatils:</td>"
-    document.getElementById("details").innerHTML=results;
+    results = "";
+    results += "<tr><td>Details:</td>"
+    results += "<td>data.results[song].artistName+"</td>"
+    // document.getElementById("details").innerHTML=results;
 }
