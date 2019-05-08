@@ -1,7 +1,7 @@
 var number =0;
-var artist=document.getElementById("artist").value;
 
 function search(){
+    var artist=document.getElementById("artist").value;
     var num=document.getElementById("nsongs").value;
     if(num=="0"){
         number==0;
@@ -48,7 +48,7 @@ function go(data) {
                 results+="<td>"+data.results[i].collectionName+"</td>";
             }
             if (data.results[i].trackName.length>=20){
-                results+="<td>"+data.results[i].trackName.substring(0,20)+"...</td>";
+                results+="<td><a href='detail.html?song="+i1+"&artist="+artist+"'</a>" +data.results[i].trackName.substring(0,20)+"...</td>";
             }else{
                 results+="<td><a href='detail.html?song="+i1+"&artist="+artist+"'</a>" +data.results[i].trackName+"</td>";
             }
