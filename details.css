@@ -1,3 +1,26 @@
 body{
-    background-color: darkseagreen;
+    background-color: darkcyan;
+    margin: auto;
+    position: relative;
+    top: auto;
+}
+#table{
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top: auto;
+}
+#table1{
+    font-size: xx-large;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top: auto;
+}
+#table2{
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top: auto;
+    font-size: x-large;
 }
