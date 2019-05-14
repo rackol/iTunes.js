@@ -23,9 +23,11 @@ function go(data) {
     var results1="";
     var results="";
     var results2="";
-    var length=data.results[song].trackTimeMillis;
-    var time=((length/1000)/60).toFixed(0);
-    var seconds=(length/1000);
+    var length=(data.results[song].trackTimeMillis)/1000;
+    var time=length/60;
+    var seconds=(length%60);
+    var date=new Date(data.results[song].releaseDate);
+
     results1+="<tr><td>Details:</td></tr>";
     results1+="<tr><td><img src='"+data.results[song].artworkUrl100+"'</td></tr>";
     results2+="<tr><td>Listen:</td></tr><tr><td><audio src='"+data.results[song].previewUrl +"'controls></audio></td></tr>";
@@ -36,8 +38,8 @@ function go(data) {
     results+="<tr><td>Number of songs on album:</td><td>"+data.results[song].trackCount+"</td></tr>";
     results+="<tr><td>Song Name:</td><td>"+data.results[song].trackCensoredName+"</td></tr>";
     results+="<tr><td>Song Price:</td><td>$"+data.results[song].trackPrice+"</td></tr>";
-    results+="<tr><td>Release Data:</td><td>"+data.results[song].releaseDate+"</td></tr>";
-    results+="<tr><td>Song Length:</td><td>"+time+":seconds</td></tr>";
+    results+="<tr><td>Release Data:</td><td>"+date.toDateString()+"</td></tr>";
+    results+="<tr><td>Song Length:</td><td>"+Math.floor(time)+":"+seconds.toFixed(0)+"</td></tr>";
     results+="</tr>";
     document.getElementById("table").innerHTML=results;
     document.getElementById("table1").innerHTML=results1;
